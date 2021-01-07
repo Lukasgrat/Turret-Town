@@ -1,12 +1,12 @@
 import javafx.scene.text.Text;
 import javafx.scene.paint.Color;
-public class piece{ 
+public class Piece{ 
     public int location;
     public boolean isWhite;
     public Text text;
     public int xLocation;
     public int yLocation;
-    public  piece(int location, boolean isWhite, String text){
+    public  Piece(int location, boolean isWhite, String text){
         this.location = location;
         this.text = new Text(text);
         this.xLocation = this.location%12*50+10;
