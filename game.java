@@ -26,13 +26,14 @@ public class game extends Application{
     public Pane pane = new Pane();
     public boolean whiteturn = true;
     public int buttonPressed = 144;
-    public ArrayList<piece> pieceList = new ArrayList();
+    public ArrayList<Piece> pieceList = new ArrayList();
+    public int selectedPiece = -1;
     public void start(Stage primaryStage){
         gridsetup();
-        pieceList.add( new piece(33,true,"Pawn"));
-        pane.getChildren().add((pieceList.get(0)).text);
+        pieceAdd(140,true,"Pawn");
+        pieceAdd(31, false, "Pawn");
         Scene scene = new Scene(pane, 1000, 800);
-        primaryStage.setTitle("Turret Town");
+        primaryStage.setTitle("Giga-Chess");
         primaryStage.setScene(scene);
         primaryStage.show();
 }
@@ -62,7 +63,69 @@ public class game extends Application{
                 if((e.getX()<600)&&(e.getY()<600)){
                     buttonPressed = (int)e.getX()/50+(int)e.getY()/50*12;
                     System.out.println(buttonPressed);
+                    colorOptions();
                     }
                     });
     }
+    public int pieceFind(int locate){
+        for(int x = 0; x < pieceList.size();x++){
+            if(pieceList.get(x).location == locate){
+                return x;
+            }
+        }
+        return -1;
+    }
+    public void pieceOptions(Piece piece){
+        if(piece.text.getText().equals("Pawn")){
+            if(piece.isWhite == true){
+                if(piece.location >= 12&& pieceFind(buttonPressed-12) == -1){
+                    Buttonlist[buttonPressed-12].setFill(Color.YELLOW);
+                }
+            }
+            if(piece.isWhite == false){
+                if(piece.location <= 131&& pieceFind(buttonPressed+12) == -1){
+                    Buttonlist[buttonPressed+12].setFill(Color.YELLOW);
+                }
+            }
+        }
+    }
+    public void pieceMovement(){
+        pieceList.get(selectedPiece).setLocation(buttonPressed);
+        whiteturn = !whiteturn;
+        colorReset();
+    }
+    public void colorReset(){
+        for(int x = 0; x < 144;x++){
+             if((x/12 ==0)||(x/12 ==2)||(x/12 ==4)||(x/12 ==6)||(x/12 ==8)||(x/12 == 10)){
+            if(x%2 != 0){Buttonlist[x].setFill(Color.GRAY);
+            }
+            else{
+                Buttonlist[x].setFill(Color.BROWN);
+            }}
+            else{
+                 if(x%2 != 0){Buttonlist[x].setFill(Color.BROWN);
+            }
+            else{
+                Buttonlist[x].setFill(Color.GRAY);
+            }}
+        }
+    }
+    //The function under is called to determine what color and conditions are when you click a tile and to be sent to different functions to do certain actions.
+    public void colorOptions(){
+        if(Buttonlist[buttonPressed].getFill() == Color.BROWN ||Buttonlist[buttonPressed].getFill() == Color.GRAY ){
+            if(pieceFind(buttonPressed) != -1&&pieceList.get(pieceFind(buttonPressed)).isWhite == whiteturn){
+            selectedPiece = pieceFind(buttonPressed);
+                    if(this.selectedPiece != -1){
+                    pieceOptions(pieceList.get(selectedPiece));}
+                    else{
+                    colorReset();
+                    }}}
+        else if(Buttonlist[buttonPressed].getFill() == Color.YELLOW){
+            pieceMovement();
+        }
+        }
+        public void pieceAdd(int location, boolean isWhite,  String type){
+            pieceList.add( new Piece(location, isWhite, type));
+            pane.getChildren().add((pieceList.get(pieceList.size()-1)).text);
+        }
     }
