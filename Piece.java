@@ -21,4 +21,11 @@ public class Piece{
             this.text.setStroke(Color.BLACK);
         }
     }
+    public void setLocation(int location){
+        this.location = location;
+        this.xLocation = this.location%12*50+10;
+        this.yLocation = this.location/12*50+25;
+        this.text.setX(this.xLocation);
+        this.text.setY(this.yLocation);
+    }
 }
