@@ -30,8 +30,6 @@ public class game extends Application{
     public int selectedPiece = -1;
     public void start(Stage primaryStage){
         gridsetup();
-        pieceAdd(140,true,"Pawn");
-        pieceAdd(31, false, "Pawn");
         Scene scene = new Scene(pane, 1000, 800);
         primaryStage.setTitle("Giga-Chess");
         primaryStage.setScene(scene);
@@ -88,7 +86,279 @@ public class game extends Application{
                 }
             }
         }
-    }
+        else if(piece.text.getText().equals("Bishop")){
+            for(int x = 1;x < 12; x++){
+                if(piece.location + x*13< 144&&(piece.location + x*13)%12 != 0){
+                    if(pieceFind(buttonPressed+ x*13) == -1){
+                        Buttonlist[buttonPressed+13*x].setFill(Color.YELLOW);
+                    }
+                    else if(pieceList.get(pieceFind(buttonPressed+ x*13)).isWhite == piece.isWhite){
+                        break;
+                    }
+                    else{
+                        Buttonlist[buttonPressed+13*x].setFill(Color.YELLOW);
+                        break;
+                    }}
+                else{
+                    break;}
+            }
+            for(int x = 1;x < 12;x++){
+                if(piece.location + x*11< 144&&(piece.location + x*11)%12 != 11){
+                    if(pieceFind(buttonPressed+ x*11) == -1){
+                        Buttonlist[buttonPressed+11*x].setFill(Color.YELLOW);
+                    }
+                    else if(pieceList.get(pieceFind(buttonPressed+ x*11)).isWhite == piece.isWhite){
+                        break;
+                    }
+                    else{
+                        Buttonlist[buttonPressed+11*x].setFill(Color.YELLOW);
+                        break;
+                    }}
+                else{
+                    break;}
+            }
+            for(int x = 1;x < 12;x++){
+                if(piece.location - x*13>= 0&&(piece.location - x*13)%12 != 11){
+                    if(pieceFind(buttonPressed- x*13) == -1){
+                        Buttonlist[buttonPressed-13*x].setFill(Color.YELLOW);
+                    }
+                    else if(pieceList.get(pieceFind(buttonPressed- x*13)).isWhite == piece.isWhite){
+                        break;
+                    }
+                    else{
+                        Buttonlist[buttonPressed-13*x].setFill(Color.YELLOW);
+                        break;
+                    }}
+                else{
+                    break;}
+            }
+            for(int x = 1;x < 12; x++){
+                if(piece.location - x*11>= 0 &&(piece.location - x*11)%12 != 0){
+                    if(pieceFind(buttonPressed- x*11) == -1){
+                        Buttonlist[buttonPressed-11*x].setFill(Color.YELLOW);
+                    }
+                    else if(pieceList.get(pieceFind(buttonPressed- x*11)).isWhite == piece.isWhite){
+                        break;
+                    }
+                    else{
+                        Buttonlist[buttonPressed-11*x].setFill(Color.YELLOW);
+                        break;
+                    }}
+                else{
+                    break;}
+                }
+            }
+            else if(piece.text.getText().equals("Rook")){
+            for(int x = 1;x < 12; x++){
+                if((piece.location + x)%12 != 0){
+                    if(pieceFind(buttonPressed+ x) == -1){
+                        Buttonlist[buttonPressed+x].setFill(Color.YELLOW);
+                    }
+                    else if(pieceList.get(pieceFind(buttonPressed+ x)).isWhite == piece.isWhite){
+                        break;
+                    }
+                    else{
+                        Buttonlist[buttonPressed+x].setFill(Color.YELLOW);
+                        break;
+                    }}
+                else{
+                    break;}
+            }
+            for(int x = 1;x < 12;x++){
+                if((piece.location - x) %12 != 11){
+                    if(pieceFind(buttonPressed- x) == -1){
+                        Buttonlist[buttonPressed-x].setFill(Color.YELLOW);
+                    }
+                    else if(pieceList.get(pieceFind(buttonPressed-x)).isWhite == piece.isWhite){
+                        break;
+                    }
+                    else{
+                        Buttonlist[buttonPressed-x].setFill(Color.YELLOW);
+                        break;
+                    }}
+                else{
+                    break;}
+            }
+            for(int x = 1;x < 12;x++){
+                if(piece.location - x*12>= 0){
+                    if(pieceFind(buttonPressed- x*12) == -1){
+                        Buttonlist[buttonPressed-12*x].setFill(Color.YELLOW);
+                    }
+                    else if(pieceList.get(pieceFind(buttonPressed- x*12)).isWhite == piece.isWhite){
+                        break;
+                    }
+                    else{
+                        Buttonlist[buttonPressed-12*x].setFill(Color.YELLOW);
+                        break;
+                    }}
+                else{
+                    break;}
+            }
+            for(int x = 1;x < 12; x++){
+                if(piece.location + x*12< 144){
+                    if(pieceFind(buttonPressed+ x*12) == -1){
+                        Buttonlist[buttonPressed+12*x].setFill(Color.YELLOW);
+                    }
+                    else if(pieceList.get(pieceFind(buttonPressed+ x*12)).isWhite == piece.isWhite){
+                        break;
+                    }
+                    else{
+                        Buttonlist[buttonPressed+12*x].setFill(Color.YELLOW);
+                        break;
+                    }}
+                else{
+                    break;}
+                }
+            }
+            else if(piece.text.getText().equals("Queen")){
+                for(int x = 1;x < 12; x++){
+                if(piece.location + x*13< 144&&(piece.location + x*13)%12 != 0){
+                    if(pieceFind(buttonPressed+ x*13) == -1){
+                        Buttonlist[buttonPressed+13*x].setFill(Color.YELLOW);
+                    }
+                    else if(pieceList.get(pieceFind(buttonPressed+ x*13)).isWhite == piece.isWhite){
+                        break;
+                    }
+                    else{
+                        Buttonlist[buttonPressed+13*x].setFill(Color.YELLOW);
+                        break;
+                    }}
+                else{
+                    break;}
+            }
+            for(int x = 1;x < 12;x++){
+                if(piece.location + x*11< 144&&(piece.location + x*11)%12 != 11){
+                    if(pieceFind(buttonPressed+ x*11) == -1){
+                        Buttonlist[buttonPressed+11*x].setFill(Color.YELLOW);
+                    }
+                    else if(pieceList.get(pieceFind(buttonPressed+ x*11)).isWhite == piece.isWhite){
+                        break;
+                    }
+                    else{
+                        Buttonlist[buttonPressed+11*x].setFill(Color.YELLOW);
+                        break;
+                    }}
+                else{
+                    break;}
+            }
+            for(int x = 1;x < 12;x++){
+                if(piece.location - x*13>= 0&&(piece.location - x*13)%12 != 11){
+                    if(pieceFind(buttonPressed- x*13) == -1){
+                        Buttonlist[buttonPressed-13*x].setFill(Color.YELLOW);
+                    }
+                    else if(pieceList.get(pieceFind(buttonPressed- x*13)).isWhite == piece.isWhite){
+                        break;
+                    }
+                    else{
+                        Buttonlist[buttonPressed-13*x].setFill(Color.YELLOW);
+                        break;
+                    }}
+                else{
+                    break;}
+            }
+            for(int x = 1;x < 12; x++){
+                if(piece.location - x*11>= 0 &&(piece.location - x*11)%12 != 0){
+                    if(pieceFind(buttonPressed- x*11) == -1){
+                        Buttonlist[buttonPressed-11*x].setFill(Color.YELLOW);
+                    }
+                    else if(pieceList.get(pieceFind(buttonPressed- x*11)).isWhite == piece.isWhite){
+                        break;
+                    }
+                    else{
+                        Buttonlist[buttonPressed-11*x].setFill(Color.YELLOW);
+                        break;
+                    }}
+                else{
+                    break;}
+                }
+                for(int x = 1;x < 12; x++){
+                if((piece.location + x)%12 != 0){
+                    if(pieceFind(buttonPressed+ x) == -1){
+                        Buttonlist[buttonPressed+x].setFill(Color.YELLOW);
+                    }
+                    else if(pieceList.get(pieceFind(buttonPressed+ x)).isWhite == piece.isWhite){
+                        break;
+                    }
+                    else{
+                        Buttonlist[buttonPressed+x].setFill(Color.YELLOW);
+                        break;
+                    }}
+                else{
+                    break;}
+            }
+            for(int x = 1;x < 12;x++){
+                if((piece.location - x) %12 != 11&&piece.location - x >=0){
+                    if(pieceFind(buttonPressed- x) == -1){
+                        Buttonlist[buttonPressed-x].setFill(Color.YELLOW);
+                    }
+                    else if(pieceList.get(pieceFind(buttonPressed-x)).isWhite == piece.isWhite){
+                        break;
+                    }
+                    else{
+                        Buttonlist[buttonPressed-x].setFill(Color.YELLOW);
+                        break;
+                    }}
+                else{
+                    break;}
+            }
+            for(int x = 1;x < 12;x++){
+                if(piece.location - x*12>= 0){
+                    if(pieceFind(buttonPressed- x*12) == -1){
+                        Buttonlist[buttonPressed-12*x].setFill(Color.YELLOW);
+                    }
+                    else if(pieceList.get(pieceFind(buttonPressed- x*12)).isWhite == piece.isWhite){
+                        break;
+                    }
+                    else{
+                        Buttonlist[buttonPressed-12*x].setFill(Color.YELLOW);
+                        break;
+                    }}
+                else{
+                    break;}
+            }
+            for(int x = 1;x < 12; x++){
+                if(piece.location + x*12< 144){
+                    if(pieceFind(buttonPressed+ x*12) == -1){
+                        Buttonlist[buttonPressed+12*x].setFill(Color.YELLOW);
+                    }
+                    else if(pieceList.get(pieceFind(buttonPressed+ x*12)).isWhite == piece.isWhite){
+                        break;
+                    }
+                    else{
+                        Buttonlist[buttonPressed+12*x].setFill(Color.YELLOW);
+                        break;
+                    }}
+                else{
+                    break;}
+                }
+            }
+            else if(piece.text.getText().equals("Knight")){
+                if(piece.location -23 >= 0 &&(piece.location -23) % 12 !=0 &&(pieceFind(piece.location-23) == -1 || pieceList.get(pieceFind(piece.location-23)).isWhite != piece.isWhite)){
+                    Buttonlist[buttonPressed-23].setFill(Color.YELLOW);
+                }
+                if(piece.location -25 >= 0 &&(piece.location -25) % 12 !=11 &&(pieceFind(piece.location-25) == -1 || pieceList.get(pieceFind(piece.location-25)).isWhite != piece.isWhite)){
+                    Buttonlist[buttonPressed-25].setFill(Color.YELLOW);
+                }
+                if(piece.location -14 >= 0 &&(piece.location -14) % 12 <=9 &&(pieceFind(piece.location-14) == -1 || pieceList.get(pieceFind(piece.location-14)).isWhite != piece.isWhite)){
+                    Buttonlist[buttonPressed-14].setFill(Color.YELLOW);
+                }
+                if(piece.location -10 >= 0 &&(piece.location -10) % 12 >=2 &&(pieceFind(piece.location-10) == -1 || pieceList.get(pieceFind(piece.location-10)).isWhite != piece.isWhite)){
+                    Buttonlist[buttonPressed-10].setFill(Color.YELLOW);
+                }
+                if(piece.location +10 <= 143 &&(piece.location +10) % 12 <=9 &&(pieceFind(piece.location+10) == -1 || pieceList.get(pieceFind(piece.location+10)).isWhite != piece.isWhite)){
+                    Buttonlist[buttonPressed+10].setFill(Color.YELLOW);
+                }
+                if(piece.location +14 <=143 &&(piece.location +14) % 12 >=2 &&(pieceFind(piece.location+14) == -1 || pieceList.get(pieceFind(piece.location+14)).isWhite != piece.isWhite)){
+                    Buttonlist[buttonPressed+14].setFill(Color.YELLOW);
+                }
+                if(piece.location +25 <= 143 &&(piece.location +25) % 12 !=0 &&(pieceFind(piece.location+25) == -1 || pieceList.get(pieceFind(piece.location+25)).isWhite != piece.isWhite)){
+                    Buttonlist[buttonPressed+25].setFill(Color.YELLOW);
+                }
+                if(piece.location +23 <= 143 &&(piece.location +23) % 12 != 11 &&(pieceFind(piece.location+23) == -1 || pieceList.get(pieceFind(piece.location+23)).isWhite != piece.isWhite)){
+                    Buttonlist[buttonPressed+23].setFill(Color.YELLOW);
+                }
+            }
+        }
     public void pieceMovement(){
         pieceList.get(selectedPiece).setLocation(buttonPressed);
         whiteturn = !whiteturn;
@@ -116,7 +386,8 @@ public class game extends Application{
             if(pieceFind(buttonPressed) != -1&&pieceList.get(pieceFind(buttonPressed)).isWhite == whiteturn){
             selectedPiece = pieceFind(buttonPressed);
                     if(this.selectedPiece != -1){
-                    pieceOptions(pieceList.get(selectedPiece));}
+                        colorReset();
+                        pieceOptions(pieceList.get(selectedPiece));}
                     else{
                     colorReset();
                     }}}
