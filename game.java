@@ -30,6 +30,7 @@ public class game extends Application{
     public int selectedPiece = -1;
     public void start(Stage primaryStage){
         gridsetup();
+        pieceSetup();
         Scene scene = new Scene(pane, 1000, 800);
         primaryStage.setTitle("Giga-Chess");
         primaryStage.setScene(scene);
@@ -60,7 +61,6 @@ public class game extends Application{
             pane.setOnMouseClicked(e ->{
                 if((e.getX()<600)&&(e.getY()<600)){
                     buttonPressed = (int)e.getX()/50+(int)e.getY()/50*12;
-                    System.out.println(buttonPressed);
                     colorOptions();
                     }
                     });
@@ -79,10 +79,22 @@ public class game extends Application{
                 if(piece.location >= 12&& pieceFind(buttonPressed-12) == -1){
                     Buttonlist[buttonPressed-12].setFill(Color.YELLOW);
                 }
+                if(piece.location >= 13 && pieceFind(buttonPressed-13) != -1&&pieceList.get(pieceFind(buttonPressed-13)).isWhite != piece.isWhite){
+                    Buttonlist[buttonPressed-13].setFill(Color.YELLOW);
+                }
+                if(piece.location >= 11 && pieceFind(buttonPressed-11) != -1&&pieceList.get(pieceFind(buttonPressed-11)).isWhite != piece.isWhite){
+                    Buttonlist[buttonPressed-11].setFill(Color.YELLOW);
+                }
             }
             if(piece.isWhite == false){
                 if(piece.location <= 131&& pieceFind(buttonPressed+12) == -1){
                     Buttonlist[buttonPressed+12].setFill(Color.YELLOW);
+                }
+                if(piece.location <= 132 &&pieceFind(buttonPressed+11) != -1&& pieceList.get(pieceFind(buttonPressed+11)).isWhite != piece.isWhite){
+                    Buttonlist[buttonPressed+11].setFill(Color.YELLOW);
+                }
+                if(piece.location <= 130 && pieceFind(buttonPressed+13) != -1&&pieceList.get(pieceFind(buttonPressed+13)).isWhite != piece.isWhite){
+                    Buttonlist[buttonPressed+13].setFill(Color.YELLOW);
                 }
             }
         }
@@ -359,7 +371,16 @@ public class game extends Application{
                 }
             }
         }
-    public void pieceMovement(){
+    public void pieceMovement(){      
+        for(int x = 0; x < pieceList.size(); x++){
+            if(pieceList.get(x).location == buttonPressed){
+                if(x < selectedPiece){
+                    selectedPiece--;
+                }
+                pane.getChildren().remove(pieceList.get(x).text);
+                pieceList.remove(x);
+                System.out.println(pieceList.size());
+            }}
         pieceList.get(selectedPiece).setLocation(buttonPressed);
         whiteturn = !whiteturn;
         colorReset();
@@ -395,8 +416,37 @@ public class game extends Application{
             pieceMovement();
         }
         }
-        public void pieceAdd(int location, boolean isWhite,  String type){
-            pieceList.add( new Piece(location, isWhite, type));
-            pane.getChildren().add((pieceList.get(pieceList.size()-1)).text);
+    public void pieceAdd(int location, boolean isWhite,  String type){
+        pieceList.add( new Piece(location, isWhite, type));
+        pane.getChildren().add((pieceList.get(pieceList.size()-1)).text);
+    }
+    public void pieceSetup(){
+        pieceAdd(1,false,"Pawn");
+        pieceAdd(2,false,"Rook");
+        pieceAdd(3, false, "Knight");
+        pieceAdd(4, false, "Bishop");
+        pieceAdd(5, false,"Queen");
+        pieceAdd(6, false, "Queen");
+        pieceAdd(7, false, "Bishop");
+        pieceAdd(8, false, "Knight");
+        pieceAdd(9, false, "Rook");
+        pieceAdd(10, false, "Pawn");
+        for(int x = 14; x < 22; x++){
+            pieceAdd(x,false,"Pawn");;
         }
+        pieceAdd(142,true,"Pawn");
+        pieceAdd(141,true,"Rook");
+        pieceAdd(140, true, "Knight");
+        pieceAdd(139, true, "Bishop");
+        pieceAdd(138, true,"Queen");
+        pieceAdd(137, true, "Queen");
+        pieceAdd(136, true, "Bishop");
+        pieceAdd(135, true, "Knight");
+        pieceAdd(134, true, "Rook");
+        pieceAdd(133, true, "Pawn");
+        for(int x = 129; x > 121; x--){
+            pieceAdd(x,true,"Pawn");
+        }
+    }
+    
     }
