@@ -77,24 +77,24 @@ public class game extends Application{
         if(piece.text.getText().equals("Pawn")){
             if(piece.isWhite == true){
                 if(piece.location >= 12&& pieceFind(buttonPressed-12) == -1){
-                    Buttonlist[buttonPressed-12].setFill(Color.YELLOW);
+                    Buttonlist[buttonPressed-12].setFill(Color.GREEN);
                 }
                 if(piece.location >= 13 && pieceFind(buttonPressed-13) != -1&&pieceList.get(pieceFind(buttonPressed-13)).isWhite != piece.isWhite){
-                    Buttonlist[buttonPressed-13].setFill(Color.YELLOW);
+                    Buttonlist[buttonPressed-13].setFill(Color.GREEN);
                 }
                 if(piece.location >= 11 && pieceFind(buttonPressed-11) != -1&&pieceList.get(pieceFind(buttonPressed-11)).isWhite != piece.isWhite){
-                    Buttonlist[buttonPressed-11].setFill(Color.YELLOW);
+                    Buttonlist[buttonPressed-11].setFill(Color.GREEN);
                 }
             }
             if(piece.isWhite == false){
                 if(piece.location <= 131&& pieceFind(buttonPressed+12) == -1){
-                    Buttonlist[buttonPressed+12].setFill(Color.YELLOW);
+                    Buttonlist[buttonPressed+12].setFill(Color.GREEN);
                 }
                 if(piece.location <= 132 &&pieceFind(buttonPressed+11) != -1&& pieceList.get(pieceFind(buttonPressed+11)).isWhite != piece.isWhite){
-                    Buttonlist[buttonPressed+11].setFill(Color.YELLOW);
+                    Buttonlist[buttonPressed+11].setFill(Color.GREEN);
                 }
                 if(piece.location <= 130 && pieceFind(buttonPressed+13) != -1&&pieceList.get(pieceFind(buttonPressed+13)).isWhite != piece.isWhite){
-                    Buttonlist[buttonPressed+13].setFill(Color.YELLOW);
+                    Buttonlist[buttonPressed+13].setFill(Color.GREEN);
                 }
             }
         }
@@ -102,13 +102,13 @@ public class game extends Application{
             for(int x = 1;x < 12; x++){
                 if(piece.location + x*13< 144&&(piece.location + x*13)%12 != 0){
                     if(pieceFind(buttonPressed+ x*13) == -1){
-                        Buttonlist[buttonPressed+13*x].setFill(Color.YELLOW);
+                        Buttonlist[buttonPressed+13*x].setFill(Color.GREEN);
                     }
                     else if(pieceList.get(pieceFind(buttonPressed+ x*13)).isWhite == piece.isWhite){
                         break;
                     }
                     else{
-                        Buttonlist[buttonPressed+13*x].setFill(Color.YELLOW);
+                        Buttonlist[buttonPressed+13*x].setFill(Color.GREEN);
                         break;
                     }}
                 else{
@@ -117,13 +117,13 @@ public class game extends Application{
             for(int x = 1;x < 12;x++){
                 if(piece.location + x*11< 144&&(piece.location + x*11)%12 != 11){
                     if(pieceFind(buttonPressed+ x*11) == -1){
-                        Buttonlist[buttonPressed+11*x].setFill(Color.YELLOW);
+                        Buttonlist[buttonPressed+11*x].setFill(Color.GREEN);
                     }
                     else if(pieceList.get(pieceFind(buttonPressed+ x*11)).isWhite == piece.isWhite){
                         break;
                     }
                     else{
-                        Buttonlist[buttonPressed+11*x].setFill(Color.YELLOW);
+                        Buttonlist[buttonPressed+11*x].setFill(Color.GREEN);
                         break;
                     }}
                 else{
@@ -132,13 +132,13 @@ public class game extends Application{
             for(int x = 1;x < 12;x++){
                 if(piece.location - x*13>= 0&&(piece.location - x*13)%12 != 11){
                     if(pieceFind(buttonPressed- x*13) == -1){
-                        Buttonlist[buttonPressed-13*x].setFill(Color.YELLOW);
+                        Buttonlist[buttonPressed-13*x].setFill(Color.GREEN);
                     }
                     else if(pieceList.get(pieceFind(buttonPressed- x*13)).isWhite == piece.isWhite){
                         break;
                     }
                     else{
-                        Buttonlist[buttonPressed-13*x].setFill(Color.YELLOW);
+                        Buttonlist[buttonPressed-13*x].setFill(Color.GREEN);
                         break;
                     }}
                 else{
@@ -147,13 +147,13 @@ public class game extends Application{
             for(int x = 1;x < 12; x++){
                 if(piece.location - x*11>= 0 &&(piece.location - x*11)%12 != 0){
                     if(pieceFind(buttonPressed- x*11) == -1){
-                        Buttonlist[buttonPressed-11*x].setFill(Color.YELLOW);
+                        Buttonlist[buttonPressed-11*x].setFill(Color.GREEN);
                     }
                     else if(pieceList.get(pieceFind(buttonPressed- x*11)).isWhite == piece.isWhite){
                         break;
                     }
                     else{
-                        Buttonlist[buttonPressed-11*x].setFill(Color.YELLOW);
+                        Buttonlist[buttonPressed-11*x].setFill(Color.GREEN);
                         break;
                     }}
                 else{
@@ -164,13 +164,13 @@ public class game extends Application{
             for(int x = 1;x < 12; x++){
                 if((piece.location + x)%12 != 0){
                     if(pieceFind(buttonPressed+ x) == -1){
-                        Buttonlist[buttonPressed+x].setFill(Color.YELLOW);
+                        Buttonlist[buttonPressed+x].setFill(Color.GREEN);
                     }
                     else if(pieceList.get(pieceFind(buttonPressed+ x)).isWhite == piece.isWhite){
                         break;
                     }
                     else{
-                        Buttonlist[buttonPressed+x].setFill(Color.YELLOW);
+                        Buttonlist[buttonPressed+x].setFill(Color.GREEN);
                         break;
                     }}
                 else{
@@ -179,13 +179,13 @@ public class game extends Application{
             for(int x = 1;x < 12;x++){
                 if((piece.location - x) %12 != 11){
                     if(pieceFind(buttonPressed- x) == -1){
-                        Buttonlist[buttonPressed-x].setFill(Color.YELLOW);
+                        Buttonlist[buttonPressed-x].setFill(Color.GREEN);
                     }
                     else if(pieceList.get(pieceFind(buttonPressed-x)).isWhite == piece.isWhite){
                         break;
                     }
                     else{
-                        Buttonlist[buttonPressed-x].setFill(Color.YELLOW);
+                        Buttonlist[buttonPressed-x].setFill(Color.GREEN);
                         break;
                     }}
                 else{
@@ -194,13 +194,13 @@ public class game extends Application{
             for(int x = 1;x < 12;x++){
                 if(piece.location - x*12>= 0){
                     if(pieceFind(buttonPressed- x*12) == -1){
-                        Buttonlist[buttonPressed-12*x].setFill(Color.YELLOW);
+                        Buttonlist[buttonPressed-12*x].setFill(Color.GREEN);
                     }
                     else if(pieceList.get(pieceFind(buttonPressed- x*12)).isWhite == piece.isWhite){
                         break;
                     }
                     else{
-                        Buttonlist[buttonPressed-12*x].setFill(Color.YELLOW);
+                        Buttonlist[buttonPressed-12*x].setFill(Color.GREEN);
                         break;
                     }}
                 else{
@@ -209,13 +209,13 @@ public class game extends Application{
             for(int x = 1;x < 12; x++){
                 if(piece.location + x*12< 144){
                     if(pieceFind(buttonPressed+ x*12) == -1){
-                        Buttonlist[buttonPressed+12*x].setFill(Color.YELLOW);
+                        Buttonlist[buttonPressed+12*x].setFill(Color.GREEN);
                     }
                     else if(pieceList.get(pieceFind(buttonPressed+ x*12)).isWhite == piece.isWhite){
                         break;
                     }
                     else{
-                        Buttonlist[buttonPressed+12*x].setFill(Color.YELLOW);
+                        Buttonlist[buttonPressed+12*x].setFill(Color.GREEN);
                         break;
                     }}
                 else{
@@ -226,13 +226,13 @@ public class game extends Application{
                 for(int x = 1;x < 12; x++){
                 if(piece.location + x*13< 144&&(piece.location + x*13)%12 != 0){
                     if(pieceFind(buttonPressed+ x*13) == -1){
-                        Buttonlist[buttonPressed+13*x].setFill(Color.YELLOW);
+                        Buttonlist[buttonPressed+13*x].setFill(Color.GREEN);
                     }
                     else if(pieceList.get(pieceFind(buttonPressed+ x*13)).isWhite == piece.isWhite){
                         break;
                     }
                     else{
-                        Buttonlist[buttonPressed+13*x].setFill(Color.YELLOW);
+                        Buttonlist[buttonPressed+13*x].setFill(Color.GREEN);
                         break;
                     }}
                 else{
@@ -241,13 +241,13 @@ public class game extends Application{
             for(int x = 1;x < 12;x++){
                 if(piece.location + x*11< 144&&(piece.location + x*11)%12 != 11){
                     if(pieceFind(buttonPressed+ x*11) == -1){
-                        Buttonlist[buttonPressed+11*x].setFill(Color.YELLOW);
+                        Buttonlist[buttonPressed+11*x].setFill(Color.GREEN);
                     }
                     else if(pieceList.get(pieceFind(buttonPressed+ x*11)).isWhite == piece.isWhite){
                         break;
                     }
                     else{
-                        Buttonlist[buttonPressed+11*x].setFill(Color.YELLOW);
+                        Buttonlist[buttonPressed+11*x].setFill(Color.GREEN);
                         break;
                     }}
                 else{
@@ -256,13 +256,13 @@ public class game extends Application{
             for(int x = 1;x < 12;x++){
                 if(piece.location - x*13>= 0&&(piece.location - x*13)%12 != 11){
                     if(pieceFind(buttonPressed- x*13) == -1){
-                        Buttonlist[buttonPressed-13*x].setFill(Color.YELLOW);
+                        Buttonlist[buttonPressed-13*x].setFill(Color.GREEN);
                     }
                     else if(pieceList.get(pieceFind(buttonPressed- x*13)).isWhite == piece.isWhite){
                         break;
                     }
                     else{
-                        Buttonlist[buttonPressed-13*x].setFill(Color.YELLOW);
+                        Buttonlist[buttonPressed-13*x].setFill(Color.GREEN);
                         break;
                     }}
                 else{
@@ -271,13 +271,13 @@ public class game extends Application{
             for(int x = 1;x < 12; x++){
                 if(piece.location - x*11>= 0 &&(piece.location - x*11)%12 != 0){
                     if(pieceFind(buttonPressed- x*11) == -1){
-                        Buttonlist[buttonPressed-11*x].setFill(Color.YELLOW);
+                        Buttonlist[buttonPressed-11*x].setFill(Color.GREEN);
                     }
                     else if(pieceList.get(pieceFind(buttonPressed- x*11)).isWhite == piece.isWhite){
                         break;
                     }
                     else{
-                        Buttonlist[buttonPressed-11*x].setFill(Color.YELLOW);
+                        Buttonlist[buttonPressed-11*x].setFill(Color.GREEN);
                         break;
                     }}
                 else{
@@ -286,13 +286,13 @@ public class game extends Application{
                 for(int x = 1;x < 12; x++){
                 if((piece.location + x)%12 != 0){
                     if(pieceFind(buttonPressed+ x) == -1){
-                        Buttonlist[buttonPressed+x].setFill(Color.YELLOW);
+                        Buttonlist[buttonPressed+x].setFill(Color.GREEN);
                     }
                     else if(pieceList.get(pieceFind(buttonPressed+ x)).isWhite == piece.isWhite){
                         break;
                     }
                     else{
-                        Buttonlist[buttonPressed+x].setFill(Color.YELLOW);
+                        Buttonlist[buttonPressed+x].setFill(Color.GREEN);
                         break;
                     }}
                 else{
@@ -301,13 +301,13 @@ public class game extends Application{
             for(int x = 1;x < 12;x++){
                 if((piece.location - x) %12 != 11&&piece.location - x >=0){
                     if(pieceFind(buttonPressed- x) == -1){
-                        Buttonlist[buttonPressed-x].setFill(Color.YELLOW);
+                        Buttonlist[buttonPressed-x].setFill(Color.GREEN);
                     }
                     else if(pieceList.get(pieceFind(buttonPressed-x)).isWhite == piece.isWhite){
                         break;
                     }
                     else{
-                        Buttonlist[buttonPressed-x].setFill(Color.YELLOW);
+                        Buttonlist[buttonPressed-x].setFill(Color.GREEN);
                         break;
                     }}
                 else{
@@ -316,13 +316,13 @@ public class game extends Application{
             for(int x = 1;x < 12;x++){
                 if(piece.location - x*12>= 0){
                     if(pieceFind(buttonPressed- x*12) == -1){
-                        Buttonlist[buttonPressed-12*x].setFill(Color.YELLOW);
+                        Buttonlist[buttonPressed-12*x].setFill(Color.GREEN);
                     }
                     else if(pieceList.get(pieceFind(buttonPressed- x*12)).isWhite == piece.isWhite){
                         break;
                     }
                     else{
-                        Buttonlist[buttonPressed-12*x].setFill(Color.YELLOW);
+                        Buttonlist[buttonPressed-12*x].setFill(Color.GREEN);
                         break;
                     }}
                 else{
@@ -331,13 +331,13 @@ public class game extends Application{
             for(int x = 1;x < 12; x++){
                 if(piece.location + x*12< 144){
                     if(pieceFind(buttonPressed+ x*12) == -1){
-                        Buttonlist[buttonPressed+12*x].setFill(Color.YELLOW);
+                        Buttonlist[buttonPressed+12*x].setFill(Color.GREEN);
                     }
                     else if(pieceList.get(pieceFind(buttonPressed+ x*12)).isWhite == piece.isWhite){
                         break;
                     }
                     else{
-                        Buttonlist[buttonPressed+12*x].setFill(Color.YELLOW);
+                        Buttonlist[buttonPressed+12*x].setFill(Color.GREEN);
                         break;
                     }}
                 else{
@@ -346,32 +346,34 @@ public class game extends Application{
             }
             else if(piece.text.getText().equals("Knight")){
                 if(piece.location -23 >= 0 &&(piece.location -23) % 12 !=0 &&(pieceFind(piece.location-23) == -1 || pieceList.get(pieceFind(piece.location-23)).isWhite != piece.isWhite)){
-                    Buttonlist[buttonPressed-23].setFill(Color.YELLOW);
+                    Buttonlist[buttonPressed-23].setFill(Color.GREEN);
                 }
                 if(piece.location -25 >= 0 &&(piece.location -25) % 12 !=11 &&(pieceFind(piece.location-25) == -1 || pieceList.get(pieceFind(piece.location-25)).isWhite != piece.isWhite)){
-                    Buttonlist[buttonPressed-25].setFill(Color.YELLOW);
+                    Buttonlist[buttonPressed-25].setFill(Color.GREEN);
                 }
                 if(piece.location -14 >= 0 &&(piece.location -14) % 12 <=9 &&(pieceFind(piece.location-14) == -1 || pieceList.get(pieceFind(piece.location-14)).isWhite != piece.isWhite)){
-                    Buttonlist[buttonPressed-14].setFill(Color.YELLOW);
+                    Buttonlist[buttonPressed-14].setFill(Color.GREEN);
                 }
                 if(piece.location -10 >= 0 &&(piece.location -10) % 12 >=2 &&(pieceFind(piece.location-10) == -1 || pieceList.get(pieceFind(piece.location-10)).isWhite != piece.isWhite)){
-                    Buttonlist[buttonPressed-10].setFill(Color.YELLOW);
+                    Buttonlist[buttonPressed-10].setFill(Color.GREEN);
                 }
                 if(piece.location +10 <= 143 &&(piece.location +10) % 12 <=9 &&(pieceFind(piece.location+10) == -1 || pieceList.get(pieceFind(piece.location+10)).isWhite != piece.isWhite)){
-                    Buttonlist[buttonPressed+10].setFill(Color.YELLOW);
+                    Buttonlist[buttonPressed+10].setFill(Color.GREEN);
                 }
                 if(piece.location +14 <=143 &&(piece.location +14) % 12 >=2 &&(pieceFind(piece.location+14) == -1 || pieceList.get(pieceFind(piece.location+14)).isWhite != piece.isWhite)){
-                    Buttonlist[buttonPressed+14].setFill(Color.YELLOW);
+                    Buttonlist[buttonPressed+14].setFill(Color.GREEN);
                 }
                 if(piece.location +25 <= 143 &&(piece.location +25) % 12 !=0 &&(pieceFind(piece.location+25) == -1 || pieceList.get(pieceFind(piece.location+25)).isWhite != piece.isWhite)){
-                    Buttonlist[buttonPressed+25].setFill(Color.YELLOW);
+                    Buttonlist[buttonPressed+25].setFill(Color.GREEN);
                 }
                 if(piece.location +23 <= 143 &&(piece.location +23) % 12 != 11 &&(pieceFind(piece.location+23) == -1 || pieceList.get(pieceFind(piece.location+23)).isWhite != piece.isWhite)){
-                    Buttonlist[buttonPressed+23].setFill(Color.YELLOW);
+                    Buttonlist[buttonPressed+23].setFill(Color.GREEN);
                 }
             }
         }
     public void pieceMovement(){      
+    int whitePieces = 0;
+    int blackPieces = 0;
         for(int x = 0; x < pieceList.size(); x++){
             if(pieceList.get(x).location == buttonPressed){
                 if(x < selectedPiece){
@@ -379,11 +381,25 @@ public class game extends Application{
                 }
                 pane.getChildren().remove(pieceList.get(x).text);
                 pieceList.remove(x);
+
                 System.out.println(pieceList.size());
-            }}
+            }
+            if(pieceList.get(x).isWhite){
+                whitePieces++;
+            }
+            else{
+                blackPieces++;
+            }
+        }
         pieceList.get(selectedPiece).setLocation(buttonPressed);
         whiteturn = !whiteturn;
         colorReset();
+        if(whitePieces == 0){
+            System.out.println("Black wins!");
+        }
+        if(blackPieces == 0){
+            System.out.println("White wins!");
+        }
     }
     public void colorReset(){
         for(int x = 0; x < 144;x++){
@@ -412,7 +428,7 @@ public class game extends Application{
                     else{
                     colorReset();
                     }}}
-        else if(Buttonlist[buttonPressed].getFill() == Color.YELLOW){
+        else if(Buttonlist[buttonPressed].getFill() == Color.GREEN){
             pieceMovement();
         }
         }
