@@ -372,7 +372,7 @@ public class game extends Application{
                     Buttonlist[buttonPressed+23].setFill(Color.GREEN);
                 }
             }
-            else if(piece.text.getText().equals("King")){
+            else if(piece.text.getText().equals("Earl")){
                 if(piece.location -13 >= 0 &&(piece.location -13) % 12 !=0 &&(pieceFind(piece.location-13) == -1 || pieceList.get(pieceFind(piece.location-13)).isWhite != piece.isWhite)){
                     Buttonlist[buttonPressed-13].setFill(Color.GREEN);
                 }
@@ -396,6 +396,30 @@ public class game extends Application{
                 }
                 if(piece.location +13 <= 143 &&(piece.location +13) % 12 != 11 &&(pieceFind(piece.location+13) == -1 || pieceList.get(pieceFind(piece.location+13)).isWhite != piece.isWhite)){
                     Buttonlist[buttonPressed+13].setFill(Color.GREEN);
+                }
+                if(piece.location -26 >= 0 &&(piece.location -26) % 14 !=0 &&(pieceFind(piece.location-26) == -1 || pieceList.get(pieceFind(piece.location-26)).isWhite != piece.isWhite)){
+                    Buttonlist[buttonPressed-26].setFill(Color.GREEN);
+                }
+                if(piece.location -14 >= 0 &&(piece.location -14) % 14 !=22 &&(pieceFind(piece.location-14) == -1 || pieceList.get(pieceFind(piece.location-14)).isWhite != piece.isWhite)){
+                    Buttonlist[buttonPressed-14].setFill(Color.GREEN);
+                }
+                if(piece.location -22 >= 0 &&(piece.location -22) % 14 <=9 &&(pieceFind(piece.location-22) == -1 || pieceList.get(pieceFind(piece.location-22)).isWhite != piece.isWhite)){
+                    Buttonlist[buttonPressed-22].setFill(Color.GREEN);
+                }
+                if(piece.location -2 >= 0 &&(piece.location -2) % 14 >=2 &&(pieceFind(piece.location-2) == -1 || pieceList.get(pieceFind(piece.location-1)).isWhite != piece.isWhite)){
+                    Buttonlist[buttonPressed-2].setFill(Color.GREEN);
+                }
+                if(piece.location +2 <= 143 &&(piece.location +2) % 14 <=9 &&(pieceFind(piece.location+2) == -1 || pieceList.get(pieceFind(piece.location+1)).isWhite != piece.isWhite)){
+                    Buttonlist[buttonPressed+2].setFill(Color.GREEN);
+                }
+                if(piece.location +22 <=143 &&(piece.location +22) % 14 >=2 &&(pieceFind(piece.location+22) == -1 || pieceList.get(pieceFind(piece.location+22)).isWhite != piece.isWhite)){
+                    Buttonlist[buttonPressed+22].setFill(Color.GREEN);
+                }
+                if(piece.location +14 <= 143 &&(piece.location +14) % 14 !=0 &&(pieceFind(piece.location+14) == -1 || pieceList.get(pieceFind(piece.location+14)).isWhite != piece.isWhite)){
+                    Buttonlist[buttonPressed+14].setFill(Color.GREEN);
+                }
+                if(piece.location +26 <= 143 &&(piece.location +26) % 14 != 22 &&(pieceFind(piece.location+26) == -1 || pieceList.get(pieceFind(piece.location+26)).isWhite != piece.isWhite)){
+                    Buttonlist[buttonPressed+26].setFill(Color.GREEN);
                 }
             }
         }
@@ -468,7 +492,7 @@ public class game extends Application{
         pieceAdd(3, false, "Knight");
         pieceAdd(4, false, "Bishop");
         pieceAdd(5, false,"Queen");
-        pieceAdd(6, false, "King");
+        pieceAdd(6, false, "Earl");
         pieceAdd(7, false, "Bishop");
         pieceAdd(8, false, "Knight");
         pieceAdd(9, false, "Rook");
@@ -480,7 +504,7 @@ public class game extends Application{
         pieceAdd(141,true,"Rook");
         pieceAdd(140, true, "Knight");
         pieceAdd(139, true, "Bishop");
-        pieceAdd(138, true,"King");
+        pieceAdd(138, true,"Earl");
         pieceAdd(137, true, "Queen");
         pieceAdd(136, true, "Bishop");
         pieceAdd(135, true, "Knight");
