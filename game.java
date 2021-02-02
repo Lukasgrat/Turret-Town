@@ -375,51 +375,51 @@ public class game extends Application{
             else if(piece.text.getText().equals("Earl")){
                 if(piece.location -13 >= 0 &&(piece.location -13) % 12 !=0 &&(pieceFind(piece.location-13) == -1 || pieceList.get(pieceFind(piece.location-13)).isWhite != piece.isWhite)){
                     Buttonlist[buttonPressed-13].setFill(Color.GREEN);
+                    if(piece.location -26 >= 0 &&(piece.location -26) % 12 !=0 &&(pieceFind(piece.location-26) == -1 || pieceList.get(pieceFind(piece.location-26)).isWhite != piece.isWhite)){
+                        Buttonlist[buttonPressed-26].setFill(Color.GREEN);
+                    }
                 }
                 if(piece.location -12 >= 0 &&(piece.location -12) % 12 !=11 &&(pieceFind(piece.location-12) == -1 || pieceList.get(pieceFind(piece.location-12)).isWhite != piece.isWhite)){
                     Buttonlist[buttonPressed-12].setFill(Color.GREEN);
+                    if(piece.location -24 >= 0 &&(piece.location -24) % 12 !=11 &&(pieceFind(piece.location-24) == -1 || pieceList.get(pieceFind(piece.location-14)).isWhite != piece.isWhite)){
+                        Buttonlist[buttonPressed-24].setFill(Color.GREEN);
+                    }
                 }
                 if(piece.location -11 >= 0 &&(piece.location -11) % 12 <=9 &&(pieceFind(piece.location-11) == -1 || pieceList.get(pieceFind(piece.location-11)).isWhite != piece.isWhite)){
                     Buttonlist[buttonPressed-11].setFill(Color.GREEN);
+                    if(piece.location -22 >= 0 &&(piece.location -22) % 12 <=9 &&(pieceFind(piece.location-22) == -1 || pieceList.get(pieceFind(piece.location-22)).isWhite != piece.isWhite)){
+                        Buttonlist[buttonPressed-22].setFill(Color.GREEN);
+                    }
                 }
                 if(piece.location -1 >= 0 &&(piece.location -1) % 12 >=2 &&(pieceFind(piece.location-1) == -1 || pieceList.get(pieceFind(piece.location-1)).isWhite != piece.isWhite)){
                     Buttonlist[buttonPressed-1].setFill(Color.GREEN);
+                    if(piece.location -2 >= 0 &&(piece.location -2) % 12 >=2 &&(pieceFind(piece.location-2) == -1 || pieceList.get(pieceFind(piece.location-1)).isWhite != piece.isWhite)){
+                        Buttonlist[buttonPressed-2].setFill(Color.GREEN);
+                    }
                 }
                 if(piece.location +1 <= 143 &&(piece.location +1) % 12 <=9 &&(pieceFind(piece.location+1) == -1 || pieceList.get(pieceFind(piece.location+1)).isWhite != piece.isWhite)){
                     Buttonlist[buttonPressed+1].setFill(Color.GREEN);
+                    if(piece.location +2 <= 143 &&(piece.location +2) % 12 <=9 &&(pieceFind(piece.location+2) == -1 || pieceList.get(pieceFind(piece.location+1)).isWhite != piece.isWhite)){
+                        Buttonlist[buttonPressed+2].setFill(Color.GREEN);
+                    }
                 }
                 if(piece.location +11 <=143 &&(piece.location +11) % 12 >=2 &&(pieceFind(piece.location+11) == -1 || pieceList.get(pieceFind(piece.location+11)).isWhite != piece.isWhite)){
                     Buttonlist[buttonPressed+11].setFill(Color.GREEN);
+                    if(piece.location +22 <=143 &&(piece.location +22) % 12 >=2 &&(pieceFind(piece.location+22) == -1 || pieceList.get(pieceFind(piece.location+22)).isWhite != piece.isWhite)){
+                        Buttonlist[buttonPressed+22].setFill(Color.GREEN);
+                    }
                 }
                 if(piece.location +12 <= 143 &&(piece.location +12) % 12 !=0 &&(pieceFind(piece.location+12) == -1 || pieceList.get(pieceFind(piece.location+12)).isWhite != piece.isWhite)){
                     Buttonlist[buttonPressed+12].setFill(Color.GREEN);
+                    if(piece.location +24 <= 143 &&(piece.location +24) % 12 !=0 &&(pieceFind(piece.location+24) == -1 || pieceList.get(pieceFind(piece.location+14)).isWhite != piece.isWhite)){
+                        Buttonlist[buttonPressed+24].setFill(Color.GREEN);
+                    }
                 }
                 if(piece.location +13 <= 143 &&(piece.location +13) % 12 != 11 &&(pieceFind(piece.location+13) == -1 || pieceList.get(pieceFind(piece.location+13)).isWhite != piece.isWhite)){
                     Buttonlist[buttonPressed+13].setFill(Color.GREEN);
-                }
-                if(piece.location -26 >= 0 &&(piece.location -26) % 14 !=0 &&(pieceFind(piece.location-26) == -1 || pieceList.get(pieceFind(piece.location-26)).isWhite != piece.isWhite)){
-                    Buttonlist[buttonPressed-26].setFill(Color.GREEN);
-                }
-                if(piece.location -14 >= 0 &&(piece.location -14) % 14 !=22 &&(pieceFind(piece.location-14) == -1 || pieceList.get(pieceFind(piece.location-14)).isWhite != piece.isWhite)){
-                    Buttonlist[buttonPressed-14].setFill(Color.GREEN);
-                }
-                if(piece.location -22 >= 0 &&(piece.location -22) % 14 <=9 &&(pieceFind(piece.location-22) == -1 || pieceList.get(pieceFind(piece.location-22)).isWhite != piece.isWhite)){
-                    Buttonlist[buttonPressed-22].setFill(Color.GREEN);
-                }
-                if(piece.location -2 >= 0 &&(piece.location -2) % 14 >=2 &&(pieceFind(piece.location-2) == -1 || pieceList.get(pieceFind(piece.location-1)).isWhite != piece.isWhite)){
-                    Buttonlist[buttonPressed-2].setFill(Color.GREEN);
-                }
-                if(piece.location +2 <= 143 &&(piece.location +2) % 14 <=9 &&(pieceFind(piece.location+2) == -1 || pieceList.get(pieceFind(piece.location+1)).isWhite != piece.isWhite)){
-                    Buttonlist[buttonPressed+2].setFill(Color.GREEN);
-                }
-                if(piece.location +22 <=143 &&(piece.location +22) % 14 >=2 &&(pieceFind(piece.location+22) == -1 || pieceList.get(pieceFind(piece.location+22)).isWhite != piece.isWhite)){
-                    Buttonlist[buttonPressed+22].setFill(Color.GREEN);
-                }
-                if(piece.location +14 <= 143 &&(piece.location +14) % 14 !=0 &&(pieceFind(piece.location+14) == -1 || pieceList.get(pieceFind(piece.location+14)).isWhite != piece.isWhite)){
-                    Buttonlist[buttonPressed+14].setFill(Color.GREEN);
-                }
-                if(piece.location +26 <= 143 &&(piece.location +26) % 14 != 22 &&(pieceFind(piece.location+26) == -1 || pieceList.get(pieceFind(piece.location+26)).isWhite != piece.isWhite)){
-                    Buttonlist[buttonPressed+26].setFill(Color.GREEN);
+                    if(piece.location +26 <= 143 &&(piece.location +26) % 12 != 11 &&(pieceFind(piece.location+26) == -1 || pieceList.get(pieceFind(piece.location+26)).isWhite != piece.isWhite)){
+                        Buttonlist[buttonPressed+26].setFill(Color.GREEN);
+                    }
                 }
             }
         }
