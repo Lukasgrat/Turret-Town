@@ -22,7 +22,9 @@ public class game extends Application{
     whiteturn says if it is white's turn, and thereby if it is black's
     buttonPressed will be used later on to see what button has been pressed.
     */
-    public  Rectangle[] Buttonlist = new Rectangle[144]; 
+    public int whiteLost = 0;
+    public int blackLost = 0;
+    public Rectangle[] Buttonlist = new Rectangle[144]; 
     public Pane pane = new Pane();
     public boolean whiteturn = true;
     public int buttonPressed = 144;
@@ -398,32 +400,30 @@ public class game extends Application{
             }
         }
     public void pieceMovement(){      
-    int whitePieces = 0;
-    int blackPieces = 0;
         for(int x = 0; x < pieceList.size(); x++){
             if(pieceList.get(x).location == buttonPressed){
                 if(x < selectedPiece){
                     selectedPiece--;
+                }
+                if(pieceList.get(x).isWhite){
+                    whiteLost++;
+                }
+                else{
+                    blackLost++;
                 }
                 pane.getChildren().remove(pieceList.get(x).text);
                 pieceList.remove(x);
 
                 System.out.println(pieceList.size());
             }
-            if(pieceList.get(x).isWhite){
-                whitePieces++;
-            }
-            else{
-                blackPieces++;
-            }
         }
         pieceList.get(selectedPiece).setLocation(buttonPressed);
         whiteturn = !whiteturn;
         colorReset();
-        if(whitePieces == 0){
+        if(whiteLost >= 20){
             System.out.println("Black wins!");
         }
-        if(blackPieces == 0){
+        if(blackLost >= 20){
             System.out.println("White wins!");
         }
     }
