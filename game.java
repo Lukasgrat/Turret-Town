@@ -24,15 +24,23 @@ public class game extends Application{
     */
     public int whiteLost = 0;
     public int blackLost = 0;
-    public Rectangle[] Buttonlist = new Rectangle[144]; 
+    public  Rectangle[] Buttonlist = new Rectangle[144]; 
     public Pane pane = new Pane();
     public boolean whiteturn = true;
+    public boolean canAddPiece = true;
     public int buttonPressed = 144;
+    public int blackCurrentMana = 3;
+    public int whiteCurrentMana = 0;
+    public Text whiteCurrentManaText = new Text("White Current Mana:"+ whiteCurrentMana);
+    public Text blackCurrentManaText = new Text("Black Current Mana:" + blackCurrentMana);
     public ArrayList<Piece> pieceList = new ArrayList();
+    public String addingString = "Current Adding Piece: None";
+    public Text addingText = new Text(addingString);
     public int selectedPiece = -1;
     public void start(Stage primaryStage){
         gridsetup();
         pieceSetup();
+        buttonSetup();
         Scene scene = new Scene(pane, 1000, 800);
         primaryStage.setTitle("Giga-Chess");
         primaryStage.setScene(scene);
@@ -67,6 +75,87 @@ public class game extends Application{
                     }
                     });
     }
+    //It is a subfunction that sets up the buttons to make new pieces
+    public void buttonSetup(){
+        whiteCurrentManaText.setX(650);
+        whiteCurrentManaText.setY(625);
+        blackCurrentManaText.setX(650);
+        blackCurrentManaText.setY(25);
+        pane.getChildren().add(whiteCurrentManaText);
+        pane.getChildren().add(blackCurrentManaText);
+        addingText.setX(650);
+        addingText.setY(200);
+        pane.getChildren().add(addingText);
+        Button pawnAdd = new Button("Add Pawn");
+        pawnAdd.setLayoutX(650);
+        pawnAdd.setLayoutY(50);
+        pane.getChildren().add(pawnAdd);
+        pawnAdd.setOnAction(e ->{
+            colorReset();
+            addingPiecePlacements("Pawn");
+        });
+        Button rookAdd = new Button("Add Rook");
+        rookAdd.setLayoutX(650);
+        rookAdd.setLayoutY(75);
+        pane.getChildren().add(rookAdd);
+        rookAdd.setOnAction(e ->{
+            colorReset();
+            addingPiecePlacements("Rook");
+        });
+        Button queenAdd = new Button("Add Queen");
+        queenAdd.setLayoutX(650);
+        queenAdd.setLayoutY(100);
+        pane.getChildren().add(queenAdd);
+        queenAdd.setOnAction(e ->{
+            colorReset();
+            addingPiecePlacements("Queen");
+        });
+        Button bishopAdd = new Button("Add Bishop");
+        bishopAdd.setLayoutX(650);
+        bishopAdd.setLayoutY(125);
+        pane.getChildren().add(bishopAdd);
+        bishopAdd.setOnAction(e ->{
+            colorReset();
+            addingPiecePlacements("Bishop");
+        });
+        Button knightAdd = new Button("Add Knight");
+        knightAdd.setLayoutX(650);
+        knightAdd.setLayoutY(150);
+        pane.getChildren().add(knightAdd);
+        knightAdd.setOnAction(e ->{
+            colorReset();
+            addingPiecePlacements("Knight");
+        });
+    }
+    public void addingPiecePlacements(String selected){
+        if(canAddPiece == true){
+        boolean isPiece = false;
+        addingString = selected;
+        addingText.setText("Current Adding Piece: " +addingString);
+        if(whiteturn == true &&((addingString.equals("Pawn")&&whiteCurrentMana >= 1)
+        ||((addingString.equals("Bishop")||addingString.equals("Knight"))&&whiteCurrentMana >= 3)
+        ||(addingString.equals("Rook")&&whiteCurrentMana >= 7)||(addingString.equals("Queen")&&whiteCurrentMana >= 11))){
+            for(int x = 120; x < 144; x++){
+                if(pieceFind(x) != -1) isPiece = true;
+                if(isPiece == false){
+                    Buttonlist[x].setFill(Color.BLUE);
+                }
+                isPiece = false;
+            }
+        }
+        else if(whiteturn == false &&((addingString.equals("Pawn")&&blackCurrentMana >= 1)
+        ||((addingString.equals("Bishop")||addingString.equals("Knight"))&&blackCurrentMana >= 3)
+        ||(addingString.equals("Rook")&&blackCurrentMana >= 7)||(addingString.equals("Queen")&&blackCurrentMana >= 11))){
+            for(int x = 0; x < 24; x++){
+                if(pieceFind(x) != -1) isPiece = true;
+                if(isPiece == false){
+                    Buttonlist[x].setFill(Color.BLUE);
+                }
+                isPiece = false;
+            }
+        }}
+    }
+    //It finds a piece, what did you think it did? Only thing to note is that it returns a negative one of there is none.
     public int pieceFind(int locate){
         for(int x = 0; x < pieceList.size();x++){
             if(pieceList.get(x).location == locate){
@@ -75,8 +164,11 @@ public class game extends Application{
         }
         return -1;
     }
+
+    //Checks for all the possible options of movement for every piece. If we have time we could do something with the king or double moving pawn
     public void pieceOptions(Piece piece){
-        if(piece.text.getText().equals("Pawn")){
+        //Deals with all the movements for a pawn. If we have time, I can deal with getting the two movements to work, but I won't want to deal with the whole transformation thing.
+         if(piece.text.getText().equals("Pawn")){
             if(piece.isWhite == true){
                 if(piece.location >= 12&& pieceFind(buttonPressed-12) == -1){
                     Buttonlist[buttonPressed-12].setFill(Color.GREEN);
@@ -381,7 +473,7 @@ public class game extends Application{
                 }
                 if(piece.location -12 >= 0 &&(piece.location -12) % 12 !=11 &&(pieceFind(piece.location-12) == -1 || pieceList.get(pieceFind(piece.location-12)).isWhite != piece.isWhite)){
                     Buttonlist[buttonPressed-12].setFill(Color.GREEN);
-                    if(piece.location -24 >= 0 &&(piece.location -24) % 12 !=11 &&(pieceFind(piece.location-24) == -1 || pieceList.get(pieceFind(piece.location-14)).isWhite != piece.isWhite)){
+                    if(piece.location -24 >= 0 &&(piece.location -24) % 12 !=11 &&(pieceFind(piece.location-24) == -1 || pieceList.get(pieceFind(piece.location-24)).isWhite != piece.isWhite)){
                         Buttonlist[buttonPressed-24].setFill(Color.GREEN);
                     }
                 }
@@ -423,13 +515,14 @@ public class game extends Application{
                 }
             }
         }
+        //The function moves a piece, and removes the overlapping piece if on a different team.
     public void pieceMovement(){      
         for(int x = 0; x < pieceList.size(); x++){
             if(pieceList.get(x).location == buttonPressed){
                 if(x < selectedPiece){
                     selectedPiece--;
                 }
-                if(pieceList.get(x).isWhite){
+                 if(pieceList.get(x).isWhite){
                     whiteLost++;
                 }
                 else{
@@ -437,20 +530,72 @@ public class game extends Application{
                 }
                 pane.getChildren().remove(pieceList.get(x).text);
                 pieceList.remove(x);
-
-                System.out.println(pieceList.size());
-            }
-        }
+            }}
         pieceList.get(selectedPiece).setLocation(buttonPressed);
+        //Every time the player moves a piece will increase their mana by 3
+        if(whiteturn == true){
+            whiteCurrentMana+=3;
+        }
+        else{
+            blackCurrentMana+=3;
+        }
+        blackCurrentManaText.setText("Black Current Mana:"+ blackCurrentMana);
+        whiteCurrentManaText.setText("White Current Mana:"+ whiteCurrentMana);
         whiteturn = !whiteturn;
-        colorReset();
         if(whiteLost >= 20){
             System.out.println("Black wins!");
         }
         if(blackLost >= 20){
             System.out.println("White wins!");
         }
+        canAddPiece = true;
+        colorReset();
     }
+    //The function below adds a board piece and subtracts the amount of mana that it costs to make one.
+    //I doubled the costs for rooks and queens because they were a bit too broken in testing.
+    public void addBoardPiece(){
+        pieceAdd(buttonPressed,whiteturn,addingString);
+        if(addingString.equals("Pawn")){
+            if(whiteturn== true){
+                whiteCurrentMana--;
+            }
+            else{
+                blackCurrentMana--;
+            }}
+        if(addingString.equals("Knight")){
+            if(whiteturn== true){
+                whiteCurrentMana-=3;
+            }
+            else{
+                blackCurrentMana-=3;
+                }}
+        if(addingString.equals("Bishop")){
+            if(whiteturn== true){
+                whiteCurrentMana-=3;
+            }
+            else{
+                blackCurrentMana-=3;
+            }}
+        if(addingString.equals("Rook")){
+            if(whiteturn== true){
+                whiteCurrentMana-=10;
+            }
+            else{
+                blackCurrentMana-=10;
+            }}
+        if(addingString.equals("Queen")){
+            if(whiteturn== true){
+                whiteCurrentMana-= 11;
+            }
+            else{
+                blackCurrentMana-= 11;
+            }}
+        colorReset();
+        canAddPiece = false;
+        blackCurrentManaText.setText("Black Current Mana:"+ blackCurrentMana);
+        whiteCurrentManaText.setText("White Current Mana:"+ whiteCurrentMana);
+    }
+    //Resets all the colors of the tiles when called. To either gray or brown.
     public void colorReset(){
         for(int x = 0; x < 144;x++){
              if((x/12 ==0)||(x/12 ==2)||(x/12 ==4)||(x/12 ==6)||(x/12 ==8)||(x/12 == 10)){
@@ -481,11 +626,18 @@ public class game extends Application{
         else if(Buttonlist[buttonPressed].getFill() == Color.GREEN){
             pieceMovement();
         }
+        else if(Buttonlist[buttonPressed].getFill() == Color.BLUE){
+            addBoardPiece();
         }
+        addingString = "None";
+        addingText.setText("Current Adding Piece: "+ addingString);
+        }
+        // A function that just helps to streamline the adding of pieces
     public void pieceAdd(int location, boolean isWhite,  String type){
         pieceList.add( new Piece(location, isWhite, type));
         pane.getChildren().add((pieceList.get(pieceList.size()-1)).text);
     }
+    //The function sets up all the starting pieces, with a couple of for loops for pawns
     public void pieceSetup(){
         pieceAdd(1,false,"Pawn");
         pieceAdd(2,false,"Rook");
@@ -514,5 +666,4 @@ public class game extends Application{
             pieceAdd(x,true,"Pawn");
         }
     }
-    
     }
