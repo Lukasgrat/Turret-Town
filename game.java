@@ -27,14 +27,16 @@ public class game extends Application{
     public  Rectangle[] Buttonlist = new Rectangle[144]; 
     public Pane pane = new Pane();
     public boolean whiteturn = true;
+    public String currentPlayer = "White's Turn";
     public boolean canAddPiece = true;
     public int buttonPressed = 144;
     public int blackCurrentMana = 3;
     public int whiteCurrentMana = 0;
-    public Text whiteCurrentManaText = new Text("White Current Mana:"+ whiteCurrentMana);
-    public Text blackCurrentManaText = new Text("Black Current Mana:" + blackCurrentMana);
-    public ArrayList<Piece> pieceList = new ArrayList();
-    public String addingString = "Current Adding Piece: None";
+    public Text whiteCurrentManaText = new Text("White Mana: " + whiteCurrentMana);
+    public Text blackCurrentManaText = new Text("Black Mana: " + blackCurrentMana);
+    public Text currentTurn = new Text(currentPlayer);
+    public ArrayList<Piece> pieceList = new ArrayList<Piece>();
+    public String addingString = "Current Piece: None";
     public Text addingText = new Text(addingString);
     public int selectedPiece = -1;
     public void start(Stage primaryStage){
@@ -78,17 +80,20 @@ public class game extends Application{
     //It is a subfunction that sets up the buttons to make new pieces
     public void buttonSetup(){
         whiteCurrentManaText.setX(650);
-        whiteCurrentManaText.setY(625);
+        whiteCurrentManaText.setY(575);
         blackCurrentManaText.setX(650);
         blackCurrentManaText.setY(25);
         pane.getChildren().add(whiteCurrentManaText);
         pane.getChildren().add(blackCurrentManaText);
         addingText.setX(650);
-        addingText.setY(200);
+        addingText.setY(375);
+        currentTurn.setX(650);
+        currentTurn.setY(350);
+        pane.getChildren().add(currentTurn);
         pane.getChildren().add(addingText);
         Button pawnAdd = new Button("Add Pawn");
         pawnAdd.setLayoutX(650);
-        pawnAdd.setLayoutY(50);
+        pawnAdd.setLayoutY(200);
         pane.getChildren().add(pawnAdd);
         pawnAdd.setOnAction(e ->{
             colorReset();
@@ -96,23 +101,23 @@ public class game extends Application{
         });
         Button rookAdd = new Button("Add Rook");
         rookAdd.setLayoutX(650);
-        rookAdd.setLayoutY(75);
+        rookAdd.setLayoutY(300);
         pane.getChildren().add(rookAdd);
         rookAdd.setOnAction(e ->{
             colorReset();
             addingPiecePlacements("Rook");
         });
-        Button queenAdd = new Button("Add Queen");
+        Button queenAdd = new Button("Add Earl");
         queenAdd.setLayoutX(650);
-        queenAdd.setLayoutY(100);
+        queenAdd.setLayoutY(275);
         pane.getChildren().add(queenAdd);
         queenAdd.setOnAction(e ->{
             colorReset();
-            addingPiecePlacements("Queen");
+            addingPiecePlacements("Earl");
         });
         Button bishopAdd = new Button("Add Bishop");
         bishopAdd.setLayoutX(650);
-        bishopAdd.setLayoutY(125);
+        bishopAdd.setLayoutY(225);
         pane.getChildren().add(bishopAdd);
         bishopAdd.setOnAction(e ->{
             colorReset();
@@ -120,21 +125,27 @@ public class game extends Application{
         });
         Button knightAdd = new Button("Add Knight");
         knightAdd.setLayoutX(650);
-        knightAdd.setLayoutY(150);
+        knightAdd.setLayoutY(250);
         pane.getChildren().add(knightAdd);
         knightAdd.setOnAction(e ->{
             colorReset();
             addingPiecePlacements("Knight");
         });
+        if(whiteturn){
+            currentPlayer = "White's Turn";        }
+        else{
+            currentPlayer = "Black's Turn";
+        }
+        currentTurn.setText(currentPlayer);
     }
     public void addingPiecePlacements(String selected){
         if(canAddPiece == true){
         boolean isPiece = false;
         addingString = selected;
-        addingText.setText("Current Adding Piece: " +addingString);
+        addingText.setText("Current Piece: " +addingString);
         if(whiteturn == true &&((addingString.equals("Pawn")&&whiteCurrentMana >= 1)
         ||((addingString.equals("Bishop")||addingString.equals("Knight"))&&whiteCurrentMana >= 3)
-        ||(addingString.equals("Rook")&&whiteCurrentMana >= 7)||(addingString.equals("Queen")&&whiteCurrentMana >= 11))){
+        ||(addingString.equals("Rook")&&whiteCurrentMana >= 8)||(addingString.equals("Earl")&&whiteCurrentMana >= 5))){
             for(int x = 120; x < 144; x++){
                 if(pieceFind(x) != -1) isPiece = true;
                 if(isPiece == false){
@@ -145,7 +156,7 @@ public class game extends Application{
         }
         else if(whiteturn == false &&((addingString.equals("Pawn")&&blackCurrentMana >= 1)
         ||((addingString.equals("Bishop")||addingString.equals("Knight"))&&blackCurrentMana >= 3)
-        ||(addingString.equals("Rook")&&blackCurrentMana >= 7)||(addingString.equals("Queen")&&blackCurrentMana >= 11))){
+        ||(addingString.equals("Rook")&&blackCurrentMana >= 8)||(addingString.equals("Earl")&&blackCurrentMana >= 5))){
             for(int x = 0; x < 24; x++){
                 if(pieceFind(x) != -1) isPiece = true;
                 if(isPiece == false){
@@ -539,9 +550,15 @@ public class game extends Application{
         else{
             blackCurrentMana+=3;
         }
-        blackCurrentManaText.setText("Black Current Mana:"+ blackCurrentMana);
-        whiteCurrentManaText.setText("White Current Mana:"+ whiteCurrentMana);
+        blackCurrentManaText.setText("Black Mana: "+ blackCurrentMana);
+        whiteCurrentManaText.setText("White Mana: "+ whiteCurrentMana);
         whiteturn = !whiteturn;
+        if(whiteturn){
+            currentPlayer = "White's Turn";        }
+        else{
+            currentPlayer = "Black's Turn";
+        }
+        currentTurn.setText(currentPlayer);
         if(whiteLost >= 20){
             System.out.println("Black wins!");
         }
@@ -578,22 +595,22 @@ public class game extends Application{
             }}
         if(addingString.equals("Rook")){
             if(whiteturn== true){
-                whiteCurrentMana-=10;
+                whiteCurrentMana-=8;
             }
             else{
-                blackCurrentMana-=10;
+                blackCurrentMana-=8;
             }}
-        if(addingString.equals("Queen")){
+        if(addingString.equals("Earl")){
             if(whiteturn== true){
-                whiteCurrentMana-= 11;
+                whiteCurrentMana-= 5;
             }
             else{
-                blackCurrentMana-= 11;
+                blackCurrentMana-= 5;
             }}
         colorReset();
         canAddPiece = false;
-        blackCurrentManaText.setText("Black Current Mana:"+ blackCurrentMana);
-        whiteCurrentManaText.setText("White Current Mana:"+ whiteCurrentMana);
+        blackCurrentManaText.setText("Black Mana: "+ blackCurrentMana);
+        whiteCurrentManaText.setText("White Mana: "+ whiteCurrentMana);
     }
     //Resets all the colors of the tiles when called. To either gray or brown.
     public void colorReset(){
@@ -630,7 +647,7 @@ public class game extends Application{
             addBoardPiece();
         }
         addingString = "None";
-        addingText.setText("Current Adding Piece: "+ addingString);
+        addingText.setText("Current Piece: "+ addingString);
         }
         // A function that just helps to streamline the adding of pieces
     public void pieceAdd(int location, boolean isWhite,  String type){
